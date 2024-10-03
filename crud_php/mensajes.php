@@ -15,7 +15,7 @@ if(isset($_REQUEST['a'])){ ?>
   </div>
 </div>
 <?php } ?>
-
+ 
 
 <?php
 //Msjs Datos del alumno actualizados
