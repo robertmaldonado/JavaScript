@@ -19,8 +19,8 @@
                 <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
             </div>
             <div class="mb-3">
-                <label for="fecha" class="form-label">Fecha</label>
-                <input type="date" class="form-control" id="fecha">
+                <label for="fecha" class="form-label">Fecha de retiro</label>
+                <input type="date" class="form-control" id="fecharetiro">
             </div>
             <button type="button" class="btn btn-primary" onclick="enviarRegistro()">Enviar a WhatsApp</button>
         </form>
@@ -35,7 +35,7 @@
 
     <script>  // Obtener la fecha actual
 
-        const fechaInput = document.getElementById('fecha');
+        const fechaInput = document.getElementById('fecharetiro');
         const fechaActual = new Date();
 
         console.log(fechaActual);
@@ -57,7 +57,7 @@
     <script>
         function enviarRegistro() {
             const nombre = document.getElementById('nombre').value;
-            const fecha = document.getElementById('fecha').value;
+            const fecha = document.getElementById('fecharetiro').value;
 
             console.log(fecha);
 
