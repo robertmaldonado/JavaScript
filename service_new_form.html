@@ -58,8 +58,8 @@
 
                         <option value="alto">tv</option>
                         <option value="medio">air fryer</option>
-                        <option value="bajo">cafetera</option>
-                        <option value="bajo">treter</option>
+                        <option value="bajo">horno multifuncional</option>
+                        <option value="bajo">ventilador de pedestal</option>
 
                         <option value="alto">tv</option>
                         <option value="medio">air fryer</option>
@@ -144,6 +144,10 @@
                 <div class="col-md-2">
                     <label for="fechaingreso" class="form-label">fechaingreso</label>
                     <input type="date" class="form-control" id="fechaingreso">
+                </div>
+                <div class="col-md-2">
+                    <label for="fechaestret" class="form-label">fecha est retirp</label>
+                    <input type="date" class="form-control" id="fechaestret">
                 </div>
 
             </div>
@@ -236,18 +240,42 @@
             const fechaInput = document.getElementById("fechaingreso");
             const hoy = new Date();
             fechaInput.value = hoy.toISOString().split('T')[0];
+
+          //  const fechaInput = document.getElementById("fechaestret");
+           // const hoy = new Date();
+            const maxDate = new Date();
+            maxDate.setDate(hoy.getDate() + 15);
+
+            const fechaInput1 = document.getElementById("fechaestret");
+            // Formato YYYY-MM-DD para el atributo min y max
+            const formatoFecha = (fecha) => fecha.toISOString().split("T")[0];
+            fechaInput1.min = formatoFecha(hoy);
+            fechaInput1.max = formatoFecha(maxDate);
+
         };
 
+      /*   window.onload = function () {
+            const fechaInput = document.getElementById("fechaestret");
+            const hoy = new Date();
+            const maxDate = new Date();
+            maxDate.setDate(hoy.getDate() + 15);
+
+            // Formato YYYY-MM-DD para el atributo min y max
+            const formatoFecha = (fecha) => fecha.toISOString().split("T")[0];
+            fechaInput.min = formatoFecha(hoy);
+            fechaInput.max = formatoFecha(maxDate);
+        };
+ */
 
 
-        // ejemplo de formatear la fecha para guardar mysql tipo date
+     /*    // ejemplo de formatear la fecha para guardar mysql tipo date
         const hoy = new Date();
         const año = hoy.getFullYear();
         const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Mes en formato 2 dígitos
         const día = String(hoy.getDate()).padStart(2, '0');      // Día en formato 2 dígitos
         const fechaFormateada = `${año}-${mes}-${día}`;
         console.log(fechaFormateada); // Ejemplo: "2024-12-23"
-
+ */
         /*         // Insertar la fecha
         const sql = 'INSERT INTO tabla (fecha) VALUES (?)';
         conexion.execute(sql, [fechaFormateada], (err, results) => {
