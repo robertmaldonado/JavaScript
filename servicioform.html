@@ -35,25 +35,115 @@
         <form>
             <!-- Primera fila -->
             <div class="row mb-3">
+
+
                 <div class="col-md-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Ejemplo Luis Gonzales">
+                    <label for="equipo" class="form-label">equipo</label>
+                    <select class="form-select" id="equipo" aria-label="Default select example">
+                        <option selected>Selecciona un nivel</option>
+                        <option value="alto">tv</option>
+                        <option value="medio">air fryer</option>
+                        <option value="bajo">cafetera</option>
+                        <option value="bajo">re5t</option>
+
+                        <option value="alto">tv</option>
+                        <option value="medio">air fryer</option>
+                        <option value="bajo">cafetera</option>
+                        <option value="bajo">trtre</option>
+
+                        <option value="alto">tv</option>
+                        <option value="medio">air fryer</option>
+                        <option value="bajo">cafetera</option>
+                        <option value="bajo">trtr</option>
+
+                        <option value="alto">tv</option>
+                        <option value="medio">air fryer</option>
+                        <option value="bajo">cafetera</option>
+                        <option value="bajo">treter</option>
+
+                        <option value="alto">tv</option>
+                        <option value="medio">air fryer</option>
+                        <option value="bajo">cafetera</option>
+                        <option value="bajo">terte</option>
+                    </select>
                 </div>
-                <div class="col-md-3">
+
+                <!-- <div class="col-md-3">
+                    <label for="equipo" class="form-label">Equipo</label>
+                    <input type="text" list="equipos" id="equipo" class="form-control"
+                        placeholder="Selecciona un equipo">
+                    <datalist id="equipos">
+                        <option value="tv">Televisión</option>
+                        <option value="sonido">Equipo de sonido</option>
+                        <option value="cafetera">Cafetera</option>
+                        <option value="electrodomesticos">Electrodomésticos</option>
+                        <option value="air fryer">freidora de aire</option>
+                        <option value="horno multifuncion">horno freidora multifuncion</option>
+                        <option value="maquina sublimacion">maquina de sublimacion</option> 
+                        <option value="ventilador torre">Ventilador tipo torre</option> 
+                        <option value="ventilador pedestal">Ventilador normal</option> 
+                        <option value="microwave">Microonda</option> 
+
+                    </datalist>
+                </div> -->
+
+
+                <!--   <div class="col-md-3">
                     <label for="telefono" class="form-label">Teléfono</label>
                     <input type="tel" class="form-control" id="telefono" placeholder="Ingresa tu teléfono">
+                </div> -->
+
+                <div class="col-md-2">
+                    <label for="marca" class="form-label">marca</label>
+                    <select class="form-select" id="marca" aria-label="Default select example">
+                        <option selected>Selecciona un nivel</option>
+                        <option value="alto">samsung</option>
+                        <option value="medio">lg</option>
+                        <option value="bajo">nisato</option>
+                        <option value="bajo">sankey</option>
+
+                        <option value="alto">premier</option>
+                        <option value="medio">mystyic</option>
+                        <option value="bajo">sony</option>
+                        <option value="bajo">jvc</option>
+
+                        <option value="alto">hisense</option>
+                        <option value="medio">air fryer</option>
+                        <option value="bajo">cafetera</option>
+                        <option value="bajo">trtr</option>
+
+                        <option value="alto">tv</option>
+                        <option value="medio">air fryer</option>
+                        <option value="bajo">cafetera</option>
+                        <option value="bajo">treter</option>
+
+                        <option value="alto">tv</option>
+                        <option value="medio">air fryer</option>
+                        <option value="bajo">cafetera</option>
+                        <option value="bajo">terte</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <label for="pulgadas" class="form-label">pulgadas</label>
+                    <input type="number" class="form-control" id="pulgadas" placeholder="ced/pas">
+                </div>
+
+
+                <div class="col-md-2">
+                    <label for="estaus" class="form-label">estaus</label>
+                    <select class="form-select" id="estaus" aria-label="Default select example">
+                        <option selected>Selecciona un nivel</option>
+                        <option value="alto">revisar</option>
+                        <option value="medio">revisado</option>
+                        <option value="bajo">retirado</option>
+                        <option value="bajo">presupuesto</option>
+
+
+                    </select>
                 </div>
                 <div class="col-md-2">
-                    <label for="correo" class="form-label">Correo</label>
-                    <input type="email" class="form-control" id="correo" placeholder="Ingresa tu correo">
-                </div>
-                <div class="col-md-2">
-                    <label for="fecha" class="form-label">Fecha</label>
-                    <input type="date" class="form-control" id="fecha1">
-                </div>
-                <div class="col-md-2">
-                    <label for="direccion" class="form-label">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" placeholder="ced/pas">
+                    <label for="fechaingreso" class="form-label">fechaingreso</label>
+                    <input type="date" class="form-control" id="fechaingreso">
                 </div>
 
             </div>
@@ -96,7 +186,7 @@
 
     <!-- JavaScript -->
     <script>
-        const telefonoInput = document.getElementById('telefono');
+       /*  const telefonoInput = document.getElementById('telefono');
 
         telefonoInput.addEventListener('input', function (e) {
             let input = e.target.value;
@@ -117,7 +207,7 @@
             e.target.value = input;
         });
 
-
+ */
 
 
 
@@ -143,7 +233,7 @@
         // muestra la fecha actual
 
         window.onload = function () {
-            const fechaInput = document.getElementById("fecha1");
+            const fechaInput = document.getElementById("fechaingreso");
             const hoy = new Date();
             fechaInput.value = hoy.toISOString().split('T')[0];
         };
