@@ -32,7 +32,9 @@
 <body>
     <div class="container mt-4">
         <h2 class="text-center mb-4">Formulario</h2>
-        <form>
+
+
+        <form action="/add" method="post">
             <!-- Primera fila -->
             <div class="row mb-3">
                 <div class="col-md-3">
@@ -52,8 +54,8 @@
                     <input type="date" class="form-control" id="fecha1">
                 </div>
                 <div class="col-md-2">
-                    <label for="direccion" class="form-label">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" placeholder="ced/pas">
+                    <label for="direccion" class="form-label">Ced/pass</label>
+                    <input type="text" class="form-control" id="direccion" placeholder="cedula o pasaporte">
                 </div>
 
             </div>
@@ -83,14 +85,23 @@
 
             </div>
 
+            <div class="row mb-3">
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Nota importante </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        placeholder="agregar alguna nota de precaucuion sobre el cliente"></textarea>
+                </div>
 
-    </div>
+            </div>
 
-    <!-- Botón de enviar -->
-    <div class="text-center">
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </div>
-    </form>
+
+
+
+            <!-- Botón de enviar -->
+            <div class="form-group mt-4 d-grid gap-2">
+                <button class="btn btn-success"> Crear</button>
+            </div>
+        </form>
     </div>
 
 
@@ -178,6 +189,56 @@
 
 
 
+
+
+
+
+
+<script>
+    document.getElementById("miFormulario").addEventListener("submit", (event) => {
+        event.preventDefault(); // Detiene el envío automático del formulario
+
+        // Variables para los campos
+        const nombre = document.getElementById("nombre").value.trim();
+        const telefono = document.getElementById("telefono").value.trim();
+
+        // Variables para los elementos de error
+        const errorNombre = document.getElementById("error-nombre");
+        const errorTelefono = document.getElementById("error-telefono");
+
+        // Limpiar mensajes de error
+        errorNombre.textContent = "";
+        errorTelefono.textContent = "";
+
+        let esValido = true; // Bandera para validar el formulario
+
+        // Validar campo "Nombre"
+        if (nombre === "") {
+            errorNombre.textContent = "El nombre es obligatorio.";
+            esValido = false;
+        } else if (nombre.length < 3) {
+            errorNombre.textContent = "El nombre debe tener al menos 3 caracteres.";
+            esValido = false;
+        }
+
+        // Validar campo "Teléfono"
+        const telefonoSinGuiones = telefono.replace(/-/g, ""); // Eliminar guiones
+        if (!/^\d{8,15}$/.test(telefonoSinGuiones)) {
+            errorTelefono.textContent = "El teléfono debe contener entre 8 y 15 dígitos sin caracteres especiales.";
+            esValido = false;
+        }
+
+        // Si el formulario es válido, procesar y enviar
+        if (esValido) {
+            // Actualizar los valores procesados en el formulario
+            document.getElementById("nombre").value = nombre;
+            document.getElementById("telefono").value = telefonoSinGuiones;
+
+            // Enviar el formulario automáticamente
+            event.target.submit();
+        }
+    });
+</script>
 
 
 

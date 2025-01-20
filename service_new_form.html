@@ -268,14 +268,14 @@
  */
 
 
-     /*    // ejemplo de formatear la fecha para guardar mysql tipo date
+        // ejemplo de formatear la fecha para guardar mysql tipo date
         const hoy = new Date();
         const año = hoy.getFullYear();
         const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Mes en formato 2 dígitos
         const día = String(hoy.getDate()).padStart(2, '0');      // Día en formato 2 dígitos
         const fechaFormateada = `${año}-${mes}-${día}`;
         console.log(fechaFormateada); // Ejemplo: "2024-12-23"
- */
+
         /*         // Insertar la fecha
         const sql = 'INSERT INTO tabla (fecha) VALUES (?)';
         conexion.execute(sql, [fechaFormateada], (err, results) => {

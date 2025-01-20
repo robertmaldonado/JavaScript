@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada Cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow p-4">
+            <h1 class="mb-4">Entrada Cliente</h1>
+            <form id="clienteForm">
+                <!-- Fecha Actual -->
+                <div class="mb-3">
+                    <label for="fechaActual" class="form-label">Fecha Actual</label>
+                    <input type="date" class="form-control" id="fechaActual" readonly>
+                </div>
+                <!-- Nombre -->
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre" required>
+                </div>
+                <!-- Teléfono -->
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="tel" class="form-control" id="telefono" placeholder="Ingrese el teléfono" required>
+                </div>
+                <!-- Fecha de Retiro -->
+                <div class="mb-3">
+                    <label for="fechaRetiro" class="form-label">Fecha de Retiro</label>
+                    <input type="date" class="form-control" id="fechaRetiro" required>
+                </div>
+                <!-- Botón Enviar -->
+                <button type="button" class="btn btn-primary" id="enviarBtn">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Establecer la fecha actual en el campo de fecha
+        document.getElementById("fechaActual").value = new Date().toISOString().split("T")[0];
+
+        // const fechaISO = "2025-01-04"; // Formato original (YYYY-MM-DD)
+        const fechaISO = new Date().toISOString().split("T")[0];
+        const [year, month, day] = fechaISO.split("-"); // Divide la cadena en partes
+        //const fechaFormateada = `${month}-${day}-${year}`; // Reorganiza los valores
+        const fechaFormateada = `${day}/${month}/${year}`; // Reorganiza los valores
+        console.log(fechaFormateada); // Salida: 01-04-2025
+        //document.getElementById("fechaActual").value = fechaFormateada;
+
+
+
+        // Lógica para enviar el mensaje de WhatsApp
+        document.getElementById("enviarBtn").addEventListener("click", () => {
+            const nombre = document.getElementById("nombre").value.trim();
+            const telefono = document.getElementById("telefono").value.trim();
+            const fechaRetiro = document.getElementById("fechaRetiro").value.trim();
+            const fechaActual = document.getElementById("fechaActual").value.trim();
+
+            if (!nombre || !telefono || !fechaRetiro) {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            const mensaje = `¡Hola! Información del cliente:
+- Fecha de entrada: ${fechaFormateada}
+- Nombre: ${nombre}
+- Teléfono: ${telefono}
+- Fecha de retiro: ${fechaRetiro}`;
+
+            const numeroWhatsApp = "50763145638";
+            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+            // Redirigir al enlace de WhatsApp
+            window.open(url, "_blank");
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+
+<!-- const fechaISO = "2025-01-04"; // Formato original (YYYY-MM-DD)
+const [year, month, day] = fechaISO.split("-"); // Divide la cadena en partes
+const fechaFormateada = `${month}-${day}-${year}`; // Reorganiza los valores
+console.log(fechaFormateada); // Salida: 01-04-2025 -->
