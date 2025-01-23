@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrada Cliente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Registro de clientes">
+    <meta property="og:description" content="Registre sus datos para enviarlos por WhatsApp">
+    <meta property="og:image" content="https://electronicarj.com/app/tools//servicio.webp">
+    <meta property="og:url" content="https://electronicarj.com/app/tools/reg1.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="registro ">
+    <meta property="og:locale" content="es_ES">
 </head>
 
 <body class="bg-light">
@@ -26,12 +35,13 @@
                 <!-- Teléfono -->
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Teléfono</label>
-                    <input type="tel" class="form-control" id="telefono" placeholder="Ingrese el teléfono" required>
+                    <input type="tel" class="form-control" id="telefono" placeholder="WhatsApp Ej: 1234-5678" required>
                 </div>
                 <!-- Fecha de Retiro -->
                 <div class="mb-3">
-                    <label for="fechaRetiro" class="form-label">Fecha de Retiro</label>
-                    <input type="date" class="form-control" id="fechaRetiro" required>
+                    <label for="fechaRetiro" class="form-label">Ubicacion</label>
+                    <input type="text" class="form-control" id="fechaRetiro" placeholder="Ej: Betania el ingenio"
+                        required>
                 </div>
                 <!-- Botón Enviar -->
                 <button type="button" class="btn btn-primary" id="enviarBtn">Enviar</button>
@@ -40,6 +50,95 @@
     </div>
 
     <script>
+
+        /*  const telefonoInput = document.getElementById('telefono');
+ 
+         telefonoInput.addEventListener('input', function (e) {
+             let input = e.target.value;
+             // Eliminar todo lo que no sea dígito
+             input = input.replace(/\D/g, '');
+ 
+             // Formatear el número
+             // Aplicar el formato "1234-5678"
+             // Aplicar formato solo si tiene exactamente 8 dígitos
+ 
+ 
+             // Aplicar formato solo si tiene exactamente 8 dígitos
+             if (input.length === 8) {
+                 input = `${input.slice(0, 4)}-${input.slice(4, 8)}`;
+             }
+ 
+             // Establecer el valor formateado
+             e.target.value = input;
+         }); */
+        // Seleccionar el campo de teléfono
+        // Seleccionar el campo de teléfono
+
+
+        /*      // Seleccionar el campo de teléfono
+             const telefonoInput = document.getElementById("telefono");
+     
+             // Evento para formatear el teléfono
+             telefonoInput.addEventListener("input", (e) => {
+                 let valor = e.target.value.replace(/[^0-9]/g, ""); // Eliminar caracteres no numéricos
+     
+                 // Insertar el guion inmediatamente después del cuarto carácter
+                 if (valor.length > 4) {
+                     valor = valor.slice(0, 4) + "-" + valor.slice(4);
+                 }
+     
+                 e.target.value = valor; // Actualizar el valor del campo
+             });
+     
+             // Prevenir caracteres adicionales al exceder el formato
+             telefonoInput.addEventListener("keypress", (e) => {
+                 const valor = telefonoInput.value.replace(/[^0-9]/g, ""); // Valor sin el guion
+                 if (valor.length >= 8 && e.key !== "Backspace") {
+                     e.preventDefault(); // Prevenir más caracteres si se alcanza el formato
+                 }
+             }); */
+
+        // Seleccionar el campo de teléfono
+
+        const telefonoInput = document.getElementById("telefono");
+
+
+        let global = "";
+        // Evento para formatear el teléfono
+        telefonoInput.addEventListener("input", (e) => {
+            //let valor =""
+            let valor = e.target.value.replace(/[^0-9]/g, ""); // Eliminar caracteres no numéricos
+            // let valor = e.target.value; // Actualizar el valor del campo
+            //  let n_anterior = valor;
+            // Insertar el guion automáticamente al escribir el cuarto número
+
+
+            if (global.length < 4) {
+
+
+                if (valor.length == 4) {
+                    // valor = valor.slice(0, 4) + "-" + valor.slice(4);
+                    valor = valor + "-"
+                    e.target.value = valor; // Actualizar el valor del campo
+                }
+            }
+
+            // Limitar la longitud del formato completo a 9 caracteres (NNNN-NNNN)
+            // if (valor.length > 9) {
+            //      valor = valor.slice(0, 9);
+            // }
+
+            //e.target.value = valor; // Actualizar el valor del campo
+            global = valor;
+
+        });
+
+
+
+
+
+
+
         // Establecer la fecha actual en el campo de fecha
         document.getElementById("fechaActual").value = new Date().toISOString().split("T")[0];
 
@@ -50,6 +149,9 @@
         const fechaFormateada = `${day}/${month}/${year}`; // Reorganiza los valores
         console.log(fechaFormateada); // Salida: 01-04-2025
         //document.getElementById("fechaActual").value = fechaFormateada;
+
+
+        //const fechaFormateada = new Date(fechaRetiro).toLocaleDateString('es-ES'); // Para español
 
 
 
@@ -65,13 +167,13 @@
                 return;
             }
 
-            const mensaje = `¡Hola! Información del cliente:
+            const mensaje = ` Informacion del cliente:
 - Fecha de entrada: ${fechaFormateada}
 - Nombre: ${nombre}
 - Teléfono: ${telefono}
-- Fecha de retiro: ${fechaRetiro}`;
+- Ubicacion: ${fechaRetiro}`;
 
-            const numeroWhatsApp = "50763145638";
+            const numeroWhatsApp = "50765281803";
             const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 
             // Redirigir al enlace de WhatsApp
