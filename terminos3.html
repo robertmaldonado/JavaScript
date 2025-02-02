@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso de Retiro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function validarCheckbox() {
+            let checkbox = document.getElementById("aceptarCondiciones");
+            let botonEnviar = document.getElementById("botonEnviar");
+            botonEnviar.disabled = !checkbox.checked; // Habilita si está marcado, deshabilita si no
+        }
+    </script>
+</head>
+
+<body class="container mt-5">
+
+    <!-- Mensaje de advertencia -->
+    <div class="alert alert-warning text-center" role="alert">
+        <h4 class="alert-heading">⚠️ Aviso Importante ⚠️</h4>
+        <p class="fs-4">Estimado cliente, tiene un plazo de <strong>2 mes</strong> para retirar su equipo.
+            Pasado este tiempo, el equipo será reciclado y no podrá ser recuperado.</p>
+    </div>
+
+    <!-- Formulario con checkbox -->
+    <form>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="aceptarCondiciones" onchange="validarCheckbox()">
+            <label class="form-check-label" for="aceptarCondiciones">
+                Acepto los términos y condiciones.
+            </label>
+        </div>
+
+        <button type="submit" id="botonEnviar" class="btn btn-primary mt-3" disabled>Enviar</button>
+    </form>
+
+</body>
+
+</html>

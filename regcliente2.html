@@ -23,6 +23,25 @@
             <h1 class="mb-4">Entrada Cliente</h1>
             <form id="clienteForm">
                 <!-- Fecha Actual -->
+
+
+                <!-- Mensaje de advertencia -->
+                <div class="alert alert-warning text-center" role="alert">
+                    <h4 class="alert-heading">⚠️ Aviso Importante ⚠️</h4>
+                    <p class="fs-4">Estimado cliente, tiene un plazo de <strong>15 dias</strong> para retirar su equipo
+                        cuando se notifique.
+                        Pasado este tiempo, el equipo será reciclado para liberar espacio, y no podrá ser recuperado.
+                    </p>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="aceptarCondiciones"
+                        onchange="validarCheckbox()">
+                    <label class="form-check-label mb-3" for="aceptarCondiciones">
+                        Acepto los términos y condiciones.
+                    </label>
+                </div>
+
+
                 <div class="mb-3">
                     <label for="fechaActual" class="form-label">Fecha Actual</label>
                     <input type="date" class="form-control" id="fechaActual" readonly>
@@ -30,18 +49,31 @@
                 <!-- Nombre -->
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre" required>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required
+                        autofocus>
+                    <!-- <div id="emailHelp1" class="form-text">Ingrese su nombre</div> -->
                 </div>
                 <!-- Teléfono -->
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Teléfono</label>
-                    <input type="tel" class="form-control" id="telefono" placeholder="WhatsApp Ej: 1234-5678" required>
+                    <input type="tel" class="form-control" id="telefono" placeholder="" required>
+                    <div id="emailHelp2" class="form-text">WhatsApp Ej: 1234-5678</div>
                 </div>
                 <!-- Fecha de Retiro -->
                 <div class="mb-3">
-                    <label for="fechaRetiro" class="form-label">Ubicacion</label>
-                    <input type="text" class="form-control" id="fechaRetiro" placeholder="Ej: Betania el ingenio"
-                        required>
+                    <label for="ubicacion" class="form-label">Ubicacion</label>
+                    <input type="text" class="form-control" id="ubicacion" placeholder="" required>
+                    <div id="emailHelp" class="form-text">Ingrese su Ubicacion</div>
+                </div>
+                <div class="mb-3">
+                    <label for="cedula" class="form-label">Cedula</label>
+                    <input type="text" class="form-control" id="cedula" placeholder="" required>
+                    <div id="cedulaHelp" class="form-text">Ingrese su Cedula</div>
+                </div>
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo</label>
+                    <input type="email" class="form-control" id="correo" placeholder="">
+                    <div id="correoHelp" class="form-text">Ingrese su Correo Electronico</div>
                 </div>
                 <!-- Botón Enviar -->
                 <button type="button" class="btn btn-primary" id="enviarBtn">Enviar</button>
@@ -135,7 +167,7 @@
 
 
 
-
+        enviarBtn.disabled = true;
 
 
 
@@ -159,10 +191,13 @@
         document.getElementById("enviarBtn").addEventListener("click", () => {
             const nombre = document.getElementById("nombre").value.trim();
             const telefono = document.getElementById("telefono").value.trim();
-            const fechaRetiro = document.getElementById("fechaRetiro").value.trim();
-            const fechaActual = document.getElementById("fechaActual").value.trim();
+            const ubicacion = document.getElementById("ubicacion").value.trim();
+            //const fechaActual = document.getElementById("fechaActual").value.trim();
 
-            if (!nombre || !telefono || !fechaRetiro) {
+            const cedula = document.getElementById("cedula").value.trim();
+            const correo = document.getElementById("correo").value.trim();
+
+            if (!nombre || !telefono || !ubicacion) {
                 alert("Por favor, completa todos los campos.");
                 return;
             }
@@ -171,7 +206,9 @@
 - Fecha de entrada: ${fechaFormateada}
 - Nombre: ${nombre}
 - Teléfono: ${telefono}
-- Ubicacion: ${fechaRetiro}`;
+- Ubicacion: ${ubicacion}
+- Cedula: ${cedula} 
+- Correo: ${correo}`;
 
             const numeroWhatsApp = "50765281803";
             const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
@@ -179,6 +216,16 @@
             // Redirigir al enlace de WhatsApp
             window.open(url, "_blank");
         });
+
+
+
+
+
+        function validarCheckbox() {
+            let checkbox = document.getElementById("aceptarCondiciones");
+            let botonEnviar = document.getElementById("botonEnviar");
+            enviarBtn.disabled = !checkbox.checked; // Habilita si está marcado, deshabilita si no
+        }
     </script>
 </body>
 
