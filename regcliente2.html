@@ -28,14 +28,14 @@
                 <!-- Mensaje de advertencia -->
                 <div class="alert alert-warning text-center" role="alert">
                     <h4 class="alert-heading">⚠️ Aviso Importante ⚠️</h4>
-                    <p class="fs-4">Estimado cliente, tiene un plazo de <strong>15 dias</strong> para retirar su equipo
-                        cuando se notifique.
-                        Pasado este tiempo, el equipo será reciclado para liberar espacio, y no podrá ser recuperado.
+                    <p class="fs-4">Estimado cliente, tiene <strong>15 DIAS</strong> para <strong>RETIRAR</strong> su
+                        equipo cuando sea notificado. Pasado este tiempo, el equipo será <strong>RECICLADO</strong> para
+                        <strong>LIBERAR ESPACIO,</strong> y <strong>NO</strong> podrá ser recuperado.
                     </p>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="aceptarCondiciones"
-                        onchange="validarCheckbox()">
+                    <input class="form-check-input" type="checkbox" id="aceptarCondiciones" onchange="validarCheckbox()"
+                        autofocus>
                     <label class="form-check-label mb-3" for="aceptarCondiciones">
                         Acepto los términos y condiciones.
                     </label>
@@ -44,13 +44,12 @@
 
                 <div class="mb-3">
                     <label for="fechaActual" class="form-label">Fecha Actual</label>
-                    <input type="date" class="form-control" id="fechaActual" readonly>
+                    <input type="date" class="form-control" id="fechaActual" disabled>
                 </div>
                 <!-- Nombre -->
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required
-                        autofocus>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required>
                     <!-- <div id="emailHelp1" class="form-text">Ingrese su nombre</div> -->
                 </div>
                 <!-- Teléfono -->
@@ -67,8 +66,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="cedula" class="form-label">Cedula</label>
-                    <input type="text" class="form-control" id="cedula" placeholder="" required>
-                    <div id="cedulaHelp" class="form-text">Ingrese su Cedula</div>
+                    <input type="text" class="form-control" id="cedula" placeholder="opcional" required>
+                    <!-- <div id="cedulaHelp" class="form-text">Ingrese su Cedula</div> -->
                 </div>
                 <div class="mb-3">
                     <label for="correo" class="form-label">Correo</label>
@@ -184,6 +183,8 @@
 
 
         //const fechaFormateada = new Date(fechaRetiro).toLocaleDateString('es-ES'); // Para español
+        // const terminox = " SI ESTOY DE ACUERDO E INFORMADO que tengo un lapso de 15 dias para retirar mi equipo cuando se notifique, si no este sera RECICLAD ";
+        const termino = " SI, ESTOY DE ACUERDO E INFORMADO  Tengo 15 DIAS desde la notificación para retirar mi equipo; de lo contrario, será RECICLADO.";
 
 
 
@@ -208,7 +209,9 @@
 - Teléfono: ${telefono}
 - Ubicacion: ${ubicacion}
 - Cedula: ${cedula} 
-- Correo: ${correo}`;
+- Correo: ${correo}
+
+* Terminos: ${termino}`;
 
             const numeroWhatsApp = "50765281803";
             const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
